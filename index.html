@@ -1,415 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <script src="//code.tidio.co/iavfmhfwgzbdzdvkxzisximec8u7lo38.js" async></script>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Semil P</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semil P - AI Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section {
+            scroll-margin-top: 80px;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-xl font-bold gradient-text">Semil P</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#about" class="nav-link px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#experience" class="nav-link px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#work-experience" class="nav-link px-3 py-2 text-sm font-medium">Experience</a>
+                        <a href="#projects" class="nav-link px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium">Contact</a>
+                        <a href="#" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md text-sm font-medium hover:opacity-90 transition">Download CV</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#work-experience" class="block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium bg-gradient-to-r from-blue-500 to-purple-500 text-white">Download CV</a>
+            </div>
+        </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Semil P</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 md:pt-32 md:pb-20 section" id="home">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                        Hello, I'm <span class="gradient-text">Semil P</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">
+                        AI Engineer | ML Developer | Python Developer
+                    </h2>
+                    <p class="text-gray-600 mb-8 max-w-lg">
+                        Recent graduate with a passion for AI and machine learning. Proficient in Python and basic knowledge with TensorFlow and PyTorch.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md font-medium hover:opacity-90 transition">Contact Info</a>
+                        <a href="#" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-100 transition">Download CV</a>
+                    </div>
+                    <div class="flex mt-8 space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                            <i class="fab fa-linkedin-in text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-gray-900 transition">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                            <img src="assets/profile-pic.png" alt="Semil P" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-3 rounded-full shadow-lg">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-code text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="assets\profile-pic.png" alt="Semil P profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Semil P</h1>
-        <p class="section__text__p2">AI Engineer|ML Developer|Python Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('assets/Semil.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/semil-p/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/semil007'"
-          />
-        </div>
-      </div>
     </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="assets\profile-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>Fresher <br />AI&ML Development</p>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white section" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Get To Know More</h2>
+                <h3 class="text-4xl font-bold gradient-text">About Me</h3>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Tech Artificial intelligence and data science</p>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-briefcase text-blue-500"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold">Experience</h4>
+                            </div>
+                            <p class="text-gray-600">1.5+ Years</p>
+                            <p class="text-gray-800 font-medium">AI & ML Development</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-graduation-cap text-purple-500"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold">Education</h4>
+                            </div>
+                            <p class="text-gray-600">B.Tech Artificial intelligence and data science</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        AI Engineer with 1.5+ years of hands-on experience in machine learning and deep learning. Skilled in Python, TensorFlow, PyTorch, and computer vision techniques. Experienced in developing end-to-end ML solutions from data collection to model deployment.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Core technical skills include:
+                        <ul class="list-disc pl-5 space-y-1 text-gray-600 mb-6">
+                            <li>Machine Learning: CNN, RNN, Transfer Learning</li>
+                            <li>Programming: Python, SQL, MongoDB</li>
+                            <li>Tools: Docker, Git, Azure ML</li>
+                            <li>Data Analysis: EDA, Statistical Modeling</li>
+                        </ul>
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Passionate about building intelligent systems and solving complex problems through data-driven approaches. Continuously learning and applying new techniques in AI/ML.
+                    </p>
+                    <a href="#experience" class="inline-flex items-center text-blue-500 font-medium hover:text-blue-700 transition">
+                        Explore My Experience
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Recent graduate with a passion for AI and machine learning. Proficient in Python and
-              basic knowledge with TensorFlow and PyTorch. Completed projects in data analysis,
-              natural language processing, and computer vision. Strong analytical and problemsolving skills. Eager to apply AI knowledge in real-world applications and
-              continuously learn and grow.
-            </p>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">AI&ML Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SQL</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MongoDB</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Exploratory data analysis</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Model Deployment</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Nerual Network</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
+
+    <!-- Work Experience Section -->
+    <section class="py-16 bg-white section" id="work-experience">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">My Professional</h2>
+                <h3 class="text-4xl font-bold gradient-text">Work Experience</h3>
             </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">AI&ML Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CNN</h3>
-                  <p>Basic</p>
+            
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <!-- Current Experience -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h4 class="text-xl font-bold">Machine learning Engineer</h4>
+                        <span class="text-blue-500 font-medium">Sep 2024 - Present</span>
+                    </div>
+                    <h5 class="text-lg text-gray-600 mb-2">AK Technologies</h5>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Developing and deploying computer vision-based systems on Microsoft Azure for real-time analysis</li>
+                        <li>Designing scalable cloud solutions using Azure AI and ML services</li>
+                        <li>Collaborating with teams to build analytics tools, focusing on model optimization and deployment pipelines</li>
+                    </ul>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Docker</h3>
-                  <p>Intermediate</p>
+                
+                <!-- Previous Experiences -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h4 class="text-xl font-bold">AI Engineer Intern</h4>
+                        <span class="text-blue-500 font-medium">Mar 2024 – Aug 2024</span>
+                    </div>
+                    <h5 class="text-lg text-gray-600 mb-2">DigitalGarage Pvt.Ltd</h5>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Focused on machine learning model development and optimization</li>
+                        <li>Acquired proficiency in Python, TensorFlow, and data analysis techniques</li>
+                        <li>Collaborated on AI-based problem-solving initiatives and evaluated model performance</li>
+                    </ul>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Statistical Analysis</h3>
-                  <p>Intermediate</p>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h4 class="text-xl font-bold">Data Science Intern</h4>
+                        <span class="text-blue-500 font-medium">Feb 2024 - May 2024</span>
+                    </div>
+                    <h5 class="text-lg text-gray-600 mb-2">Shiash info solutions Pvt.Ltd</h5>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Engaged in multi-source data collection and analysis</li>
+                        <li>Built visual aids for data interpretation using seaborn</li>
+                        <li>Analyzed real-time business data</li>
+                    </ul>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git & Github</h3>
-                  <p>Experienced</p>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h4 class="text-xl font-bold">Research And Development Engineer</h4>
+                        <span class="text-blue-500 font-medium">Sep 2022 - Nov 2023</span>
+                    </div>
+                    <h5 class="text-lg text-gray-600 mb-2">AEROKNOTZ</h5>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Worked with UAVs, utilizing MATLAB, flight controllers, and drone piloting</li>
+                        <li>Developed a communication mechanism cable enabling master-slave functionality for a single drone with two controllers</li>
+                        <li>Achieved near-millisecond latency in drone communication systems</li>
+                    </ul>
                 </div>
-              </article>
             </div>
-          </div>
+            
+            <div class="text-center mt-12">
+                <a href="#projects" class="inline-flex items-center text-blue-500 font-medium hover:text-blue-700 transition">
+                    Browse My Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets\project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
+
+    <!-- Skills Experience Section -->
+    <section class="py-16 bg-gray-50 section" id="experience">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Explore My</h2>
+                <h3 class="text-4xl font-bold gradient-text">Experience</h3>
             </div>
-            <h2 class="experience-sub-title project-title">Multiple Eye disease detection system using CNN</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <h4 class="text-xl font-bold mb-6 text-center gradient-text">AI & ML Development</h4>
+                    <div class="space-y-6">
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Python</h5>
+                                    <p class="text-sm text-gray-500">Experienced</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">SQL</h5>
+                                    <p class="text-sm text-gray-500">Experienced</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">MongoDB</h5>
+                                    <p class="text-sm text-gray-500">Intermediate</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Exploratory Data Analysis</h5>
+                                    <p class="text-sm text-gray-500">Basic</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Model Deployment</h5>
+                                    <p class="text-sm text-gray-500">Basic</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Neural Network</h5>
+                                    <p class="text-sm text-gray-500">Intermediate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <h4 class="text-xl font-bold mb-6 text-center gradient-text">AI & ML Development</h4>
+                    <div class="space-y-6">
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">CNN</h5>
+                                    <p class="text-sm text-gray-500">Basic</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Docker</h5>
+                                    <p class="text-sm text-gray-500">Intermediate</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Statistical Analysis</h5>
+                                    <p class="text-sm text-gray-500">Intermediate</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card bg-gray-50 p-4 rounded-lg transition duration-300">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-check text-green-500 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Git & GitHub</h5>
+                                    <p class="text-sm text-gray-500">Experienced</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets\project-2.jpeg"
-                alt="Project 2"
-                class="project-img"
-              />
+            
+            <div class="text-center mt-12">
+                <a href="#projects" class="inline-flex items-center text-blue-500 font-medium hover:text-blue-700 transition">
+                    Browse My Recent Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
-            <h2 class="experience-sub-title project-title">Detection of DDOS Attack in SDN by Machine learning
-            </h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets\covid.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Covid detection in lungs using image segmentation
-            </h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets\x.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Influencer user founding in Twitter(X) by data analytics</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch!</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:examplemail@gmail.com">semilpm@gmail.com</a></p>
+
+    <!-- Projects Section -->
+    <section class="py-16 bg-white section" id="projects">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Browse My Recent</h2>
+                <h3 class="text-4xl font-bold gradient-text">Projects</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/project-1.png" alt="Multiple Eye disease detection system" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Multiple Eye disease detection system using CNN</h4>
+                        <p class="text-gray-600 mb-4">A system that detects multiple eye diseases using Convolutional Neural Networks.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition">GitHub</a>
+                            <a href="#" class="text-sm px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/project-2.jpeg" alt="Detection of DDOS Attack" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Detection of DDOS Attack in SDN by Machine learning</h4>
+                        <p class="text-gray-600 mb-4">A system that detects DDOS attacks in Software Defined Networks using machine learning.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition">GitHub</a>
+                            <a href="#" class="text-sm px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/covid.png" alt="Covid detection in lungs" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Covid detection in lungs using image segmentation</h4>
+                        <p class="text-gray-600 mb-4">A system that detects Covid-19 in lung images using image segmentation techniques.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition">GitHub</a>
+                            <a href="#" class="text-sm px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/x.png" alt="Influencer user finding in Twitter(X)" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Influencer user finding in Twitter(X) by data analytics</h4>
+                        <p class="text-gray-600 mb-4">A system that identifies influencer users on Twitter using data analytics.</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition">GitHub</a>
+                            <a href="#" class="text-sm px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-flex items-center text-blue-500 font-medium hover:text-blue-700 transition">
+                    Get in Touch!
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/semil-p/">LinkedIn</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="assets\call_lgo.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a>+91 7092404027</a></p>
-        </div>
-      </div>
     </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50 section" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Get in Touch!</h2>
+                <h3 class="text-4xl font-bold gradient-text">Contact Me</h3>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-blue-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Email</h4>
+                        <a href="mailto:semilpm@gmail.com" class="text-blue-500 hover:text-blue-700 transition">semilpm@gmail.com</a>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-linkedin-in text-purple-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/semil-p/" target="_blank" class="text-blue-500 hover:text-blue-700 transition">linkedin.com/in/semil-p</a>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-phone-alt text-green-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Phone</h4>
+                        <a href="tel:+917092404027" class="text-blue-500 hover:text-blue-700 transition">+91 7092404027</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </nav>
-      <p>Copyright &#169; 2023 Semil P. All Rights Reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold gradient-text">Semil P</span>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="#about" class="text-gray-600 hover:text-blue-500 transition">About</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-500 transition">Experience</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-500 transition">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-500 transition">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                <p>Copyright © 2023 Semil P. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
-  </body>
+
+    <script>
+        
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
